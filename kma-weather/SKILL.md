@@ -130,7 +130,7 @@ python3 skills/kma-weather/scripts/forecast.py shortterm \
   --lat 37.5665 --lon 126.9780 --days all
 ```
 
-**`--days` 옵션**: `all`=전체, `1`=내일(기본), `2`=모레, `3`=글피
+**`--days` Options **: `all`=전체, `1`=내일(기본), `2`=모레, `3`=글피
 
 ### Combined Forecasts
 
@@ -146,7 +146,7 @@ python3 skills/kma-weather/scripts/forecast.py all \
   --lat 37.5665 --lon 126.9780
 ```
 
-JSON 출력 시 타입별로 구분된 구조로 반환:
+When outputting JSON, return a structure separated by type:
 ```bash
 python3 skills/kma-weather/scripts/forecast.py brief --lat 37.5665 --lon 126.9780 --json
 # {"current": {...}, "ultrashort": {...}}
@@ -192,7 +192,7 @@ python3 skills/kma-weather/scripts/midterm.py --stn-id 109
 
 **Supported regions**: 서울, 인천, 경기, 부산, 대구, 광주, 대전, 울산, 세종, 강원, 충북, 충남, 전북, 전남, 경북, 경남, 제주
 
-### JSON Output
+### Raw JSON Output
 
 All scripts support `--json` flag for raw API responses:
 
@@ -269,11 +269,11 @@ See [examples/daily-check.md] for a complete daily weather check workflow.
 | API Key | Not required | **Required** |
 | Resolution | City-level | 5km×5km grid |
 | Official Warnings | No | **Yes** (typhoon, heavy rain, snow) |
-| Best For | Quick global lookups | Detailed Korean forecasts |
+| Best For | Quick global lookups | Detailed Korean forecasts and weather warning |
 
 **Recommendation**: Use both skills complementarily:
-- `weather` for quick checks and global locations
-- `kma-weather` for detailed Korean forecasts and official warnings
+- `weather` for global locations
+- `kma-weather` for detailed Korean forecasts and weather warnings
 
 ## Troubleshooting
 
@@ -290,9 +290,9 @@ Your API key is invalid or not approved yet. Check:
 The KMA API server is experiencing delays. Try again in a few moments.
 
 ### No data returned
-- Check if the coordinates are within South Korea
-- Verify the grid coordinates using `grid_converter.py`
-- Try increasing `--rows` parameter (default: 300)
+- Check if the coordinates are within South Korea.
+- Verify the grid coordinates using `grid_converter.py`.
+- Try increasing `--rows` parameter (default: 300). If it's too high, you may receive a `429 too many requests` error.
 
 ## License
 
